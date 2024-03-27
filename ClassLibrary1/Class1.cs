@@ -1,5 +1,5 @@
 ﻿using MimeKit;
-using System.IO;
+using MimeKit.Cryptography;
 
 namespace ClassLibrary1
 {
@@ -14,6 +14,13 @@ namespace ClassLibrary1
                 {
                     var message = parser.ParseMessage();
                 }
+                try
+                {
+                    BouncyCastleCertificateExtensions.GetKeyUsageFlags(new Org.BouncyCastle.X509.X509Certificate((byte[])null));
+                }
+                catch { }
+
+                var a = Org.BouncyCastle.Crypto.AesUtilities.IsHardwareAccelerated;
             }
         }
     }
